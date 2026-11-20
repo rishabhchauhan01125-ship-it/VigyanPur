@@ -28,6 +28,25 @@ table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:7px 5px
 .wrap{overflow-x:auto}.note{font-size:13px;color:var(--mu)}.qg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.qb{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff}.qb.g{background:var(--ok)}.qb.r{background:var(--no)}.qb.o{background:#e0902b}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin:10px 0}.g3 div{background:var(--bg);border-radius:12px;padding:10px;font-size:13px}.g3 b{display:block;font-size:22px}.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px}.tabs button{flex:1;white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.tabs button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
 .ring{display:block;margin:0 auto}.ring circle{fill:none;stroke-width:10;stroke-linecap:round}.ring .pg{animation:ringin 1.1s ease-out}@keyframes ringin{from{stroke-dasharray:0 327}}
 .cf{position:fixed;top:-14px;width:8px;height:12px;z-index:50;animation:fall 2.8s linear forwards}@keyframes fall{to{transform:translateY(105vh) rotate(540deg)}}
+
+header{padding:20px 18px 24px;box-shadow:0 8px 24px rgba(11,110,135,.25)}
+.hello{font-size:22px;font-weight:800;margin:4px 2px 12px}
+.filters{display:flex;gap:8px;overflow-x:auto;margin:0 0 6px;padding-bottom:4px}
+.filters button{white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:8px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.filters button.on{background:var(--pr);border-color:var(--pr);color:#fff}
+.sec{font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);font-weight:800;margin:18px 4px 8px}
+.ch .top{display:flex;gap:12px;align-items:center}.ch .ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--okb);flex:none}
+.ch b{font-size:16px;line-height:1.25}.ch small{color:var(--mu);display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{border:1.5px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:12px;padding:8px 13px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.chip:active{transform:scale(.96)}
+.chip.g{border-color:var(--ok);background:var(--okb);color:var(--ok)}.chip.a{border-color:#e0902b;background:rgba(224,144,43,.15);color:#c77a14}.chip.r{border-color:var(--no);background:var(--nob);color:var(--no)}
+.opt{display:flex;gap:12px;align-items:center;transition:.15s}.opt .ltr{flex:none;width:30px;height:30px;border-radius:50%;background:var(--bd);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+.opt.sel{border-color:var(--pr);background:var(--okb)}.opt.sel .ltr{background:var(--pr);color:#fff}.opt.ok .ltr{background:var(--ok);color:#fff}.opt.no .ltr{background:var(--no);color:#fff}
+.qtxt{font-size:18px;line-height:1.45;margin:6px 0 10px;display:block}
+.act{position:sticky;bottom:10px;margin-top:12px;z-index:5}.act .btn{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+button.btn:disabled{opacity:.45;cursor:not-allowed}
+.pill{background:var(--card);border:1px solid var(--bd);border-radius:99px;padding:4px 12px;font-weight:800;font-size:14px}
+.hint{font-size:12.5px;color:var(--mu);text-align:center;margin:8px 0 0}
 </style></head><body>
 <header><div class="hrow"><div><div class="logo">vigyan<span>पुर</span></div><div class="tag">Learn. Practice. Grow. 🌱</div></div><div id="hr"></div></div></header>
 <main id="app">Loading…</main>
@@ -77,7 +96,44 @@ const Q=[
 ["Fe₂O₃ is commonly known as ____.",null,["rust"],"Rust is hydrated iron(III) oxide."],
 ["In a displacement reaction, a more ____ metal displaces a less reactive metal.",null,["reactive"],"Reactivity decides which metal replaces the other."],
 ["A substance that loses oxygen in a reaction is said to be ____.",null,["reduced"],"Loss of oxygen is reduction."],
-["Digestion of food is an example of ____ reaction.",null,["decomposition"],"Large food molecules break down into simpler ones."]]],
+["Digestion of food is an example of ____ reaction.",null,["decomposition"],"Large food molecules break down into simpler ones."],
+["Heating green ferrous sulphate crystals gives",["Fe₂O₃, SO₂ and SO₃","FeO and H₂","Fe and O₂","FeS and O₂"],0,"The colour changes to brown with a burning-sulphur smell."],
+["Ferrous sulphate crystals are",["Green","Blue","Red","White"],0,"They contain water of crystallisation."],
+["The gas that turns lime water milky is",["CO₂","O₂","H₂","N₂"],0,"CaCO₃ forms."],
+["Hydrogen gas is tested by",["Burning with a pop sound","Relighting a glowing splinter","Turning lime water milky","Bleaching litmus"],0,"H₂ is combustible."],
+["Oxygen gas is tested by",["Relighting a glowing splinter","Burning with a pop","Turning lime water milky","Having no effect"],0,"O₂ supports combustion."],
+["The symbol (aq) means",["Dissolved in water","Solid","Liquid","Gas"],0,"It stands for aqueous."],
+["The symbol (s) stands for",["Solid","Liquid","Gas","Aqueous"],0,"It is a state symbol."],
+["A skeletal equation shows",["Reactants and products without balancing","Balanced atoms","Only products","Only energy"],0,"Balancing comes next."],
+["While balancing equations we change the",["Coefficients","Subscripts","Formulae","Elements"],0,"Changing subscripts changes the substance."],
+["The law of conservation of mass was given by",["Lavoisier","Dalton","Newton","Mendel"],0,"Mass is neither created nor destroyed."],
+["Whitewashing with slaked lime forms ____ on the wall.",["Calcium carbonate","Calcium oxide","Calcium chloride","Calcium sulphate"],0,"Ca(OH)₂ + CO₂ → CaCO₃ + H₂O."],
+["Electrolytic decomposition of water needs",["Electricity","Heat","Light","Pressure"],0,"A little acid is added."],
+["2Pb(NO₃)₂ → 2PbO + 4NO₂ + O₂ is a",["Thermal decomposition","Combination","Displacement","Neutralisation"],0,"Heat splits lead nitrate."],
+["Silver bromide is used in",["Black-and-white photography","Cement","Soap","Glass"],0,"It decomposes in light."],
+["Displacement occurs when the incoming metal is more",["Reactive","Heavy","Shiny","Brittle"],0,"It replaces the less reactive metal."],
+["Copper does not react with dilute HCl because it is",["Less reactive than hydrogen","More reactive than hydrogen","A gas","Magnetic"],0,"It lies below hydrogen."],
+["Coating iron with zinc prevents",["Rusting","Melting","Heating","Magnetism"],0,"This is galvanisation."],
+["A reaction in which a substance gains oxygen is",["Oxidation","Reduction","Neutralisation","Decomposition"],0,"Also loss of hydrogen."],
+["A reaction in which a substance loses oxygen is",["Reduction","Oxidation","Combination","Displacement"],0,"Also gain of hydrogen."],
+["In CuO + H₂ → Cu + H₂O the oxidising agent is",["CuO","H₂","Cu","H₂O"],0,"It gives oxygen."],
+["In the same reaction the reducing agent is",["H₂","CuO","Cu","H₂O"],0,"It takes oxygen."],
+["Burning of natural gas is",["Exothermic","Endothermic","Photolytic","Electrolytic"],0,"It releases heat."],
+["Reactions that release heat are called",["Exothermic","Endothermic","Neutral","Static"],0,"Heat is a product."],
+["Slaking of lime is",["Exothermic","Endothermic","Photolytic","Electrolytic"],0,"The mixture heats up."],
+["Decomposition of calcium carbonate gives",["Quicklime and CO₂","Slaked lime and H₂","Lime water","Chalk"],0,"CaCO₃ → CaO + CO₂."],
+["On heating, ferrous sulphate changes from green to",["Brown","Blue","White","Black"],0,"Fe₂O₃ forms."],
+["Blue copper sulphate solution turns ____ when iron is added.",["Light green","Red","Colourless","Black"],0,"Iron displaces copper."],
+["Barium chloride and sodium sulphate give a",["White precipitate","Blue solution","Gas","Red solid"],0,"It is BaSO₄."],
+["CaO + H₂O → Ca(OH)₂ is a",["Combination reaction","Decomposition","Displacement","Double displacement"],0,"Two reactants form one product."],
+["Which is a combination reaction?",["2Mg + O₂ → 2MgO","CaCO₃ → CaO + CO₂","Zn + CuSO₄ → ZnSO₄ + Cu","NaOH + HCl → NaCl + H₂O"],0,"Two substances combine."],
+["Burning of coal is a",["Combustion reaction","Decomposition","Displacement","Neutralisation"],0,"It reacts with oxygen and releases heat."],
+["Corrosion also affects",["Silver and copper","Gold","Plastic","Glass"],0,"Black and green coatings form."],
+["Chips are packed in nitrogen to prevent",["Oxidation","Melting","Freezing","Reduction"],0,"Rancidity is oxidation of fats."],
+["Antioxidants are added to",["Fats and oils","Water","Salt","Sugar"],0,"They stop rancidity."],
+["HCl + NaOH → NaCl + H₂O is a",["Double displacement (neutralisation)","Combination","Decomposition","Displacement"],0,"Ions are exchanged."],
+["The number of Fe atoms in Fe₂O₃ is",["2","1","3","5"],0,"The subscript is 2."],
+["The balancing coefficients for H₂ + O₂ → H₂O are",["2, 1, 2","1, 1, 1","2, 2, 1","1, 2, 2"],0,"2H₂ + O₂ → 2H₂O."]]],
 ["Acids, Bases and Salts",[
 ["The pH of a neutral solution at 25°C is:",["0","7","10","14"],1,"pH below 7 is acidic, 7 is neutral and above 7 is basic."],
 ["Which of these turns blue litmus red?",["Lemon juice","Soap solution","Baking soda","Lime water"],0,"Acids turn blue litmus red; lemon juice contains citric acid."],
@@ -138,7 +194,27 @@ const Q=[
 ["Washing soda has ____ molecules of water of crystallisation.",["10","5","2","1"],0,"Na₂CO₃·10H₂O."],
 ["Dry HCl gas does not change dry blue litmus because it:",["Needs water to release H⁺ ions","Has no chlorine","Has no hydrogen","Is coloured"],0,"Acids act only in water."],
 ["Acid solutions conduct electricity because they contain:",["Ions","Free electrons","Neutral molecules","Atoms"],0,"Ions carry the current."],
-["Antacid tablets contain:",["Mild bases","Strong acids","Only salts","Alcohol"],0,"They neutralise stomach acid."]]],
+["Antacid tablets contain:",["Mild bases","Strong acids","Only salts","Alcohol"],0,"They neutralise stomach acid."],
+["Turmeric turns ____ with soap solution.",["Red","Blue","Green","Yellow"],0,"It is a natural indicator."],
+["Red cabbage juice turns ____ in an acid.",["Red or pink","Green","Colourless","Yellow"],0,"It is a natural indicator."],
+["Olfactory indicators change their",["Smell","Colour","Taste","Weight"],0,"Examples: onion, vanilla, clove."],
+["Vanilla essence loses its smell in a",["Strong base","Acid","Water","Salt"],0,"It is an olfactory indicator."],
+["A metal oxide with an acid gives",["Salt and water","Salt and H₂","Salt and CO₂","Only salt"],0,"Metal oxides are basic."],
+["A non-metal oxide with a base gives",["Salt and water","Salt and H₂","An acid","Only salt"],0,"Example: CO₂ + Ca(OH)₂."],
+["Rain with pH below 5.6 is called",["Acid rain","Soft rain","Hail","Mist"],0,"SO₂ and NO₂ cause it."],
+["Acid rain damages",["Monuments and aquatic life","Only roads","Only clouds","Nothing"],0,"Marble reacts with acids."],
+["Plants and animals survive in a narrow pH range of about",["7.0 to 7.8","1 to 3","10 to 14","0 to 2"],0,"Life processes need it."],
+["Too acidic soil is treated with",["Quicklime or slaked lime","Acid","Vinegar","Salt"],0,"It neutralises the acidity."],
+["A bee sting is eased by a mild base like",["Baking soda","Vinegar","Lemon","Salt"],0,"It neutralises methanoic acid."],
+["A nettle sting is treated with",["Baking soda","Vinegar","Oil","Salt"],0,"It contains methanoic acid."],
+["Acid indigestion is relieved by an",["Antacid","Vinegar","Lemon juice","Cola"],0,"It neutralises stomach acid."],
+["The pH of stomach acid is about",["1.5","7","10","13"],0,"It is strongly acidic."],
+["Mixing an acid and a base gives a pH",["Closer to 7","Exactly 0","Exactly 14","Negative"],0,"That is neutralisation."],
+["Diluting a concentrated acid is",["Exothermic","Endothermic","Photolytic","Electrolytic"],0,"Heat is released."],
+["The hydronium ion is",["H₃O⁺","OH⁻","H₂O","HO₂"],0,"It forms from H⁺ and H₂O."],
+["Sodium hydroxide is made by the",["Chlor-alkali process","Solvay process","Haber process","Contact process"],0,"Electrolysis of brine."],
+["Common salt is used for",["Preserving food","Making glass only","Making cement only","Fuel"],0,"It also feeds industry."],
+["Rock salt is",["Sodium chloride","Sodium carbonate","Sodium hydroxide","Calcium chloride"],0,"It is mined from the ground."]]],
 ["Metals and Non-metals",[
 ["Which is the most reactive metal here?",["Gold","Potassium","Zinc","Copper"],1,"Potassium is at the top of the reactivity series."],
 ["Which metal is liquid at room temperature?",["Mercury","Sodium","Iron","Zinc"],0,"Mercury is the only common liquid metal."],
@@ -199,7 +275,27 @@ const Q=[
 ["Ionic compounds are generally soluble in:",["Water","Kerosene","Petrol","Oil"],0,"Polar solvents separate the ions."],
 ["A sodium atom becomes Na⁺ by:",["Losing one electron","Gaining one electron","Losing two electrons","Gaining two electrons"],0,"It reaches a stable octet."],
 ["A chlorine atom becomes Cl⁻ by:",["Gaining one electron","Losing one electron","Losing two electrons","Gaining two electrons"],0,"It completes its octet."],
-["Rust is mainly:",["Hydrated iron(III) oxide","Iron(II) sulphate","Iron carbonate","Iron chloride"],0,"It flakes off and exposes fresh iron."]]],
+["Rust is mainly:",["Hydrated iron(III) oxide","Iron(II) sulphate","Iron carbonate","Iron chloride"],0,"It flakes off and exposes fresh iron."],
+["A mineral from which a metal can be extracted profitably is an",["Ore","Alloy","Gangue","Flux"],0,"Not every mineral is an ore."],
+["Impurities present in an ore are called",["Gangue","Flux","Slag","Alloy"],0,"They are removed during concentration."],
+["Removal of gangue is called",["Concentration of the ore","Roasting","Calcination","Refining"],0,"It is done first."],
+["The reactivity series from high to low is",["K > Na > Ca > Mg > Al > Zn > Fe","Fe > Zn > Al > Mg","Cu > Fe > Zn > Al","Au > Ag > Na > K"],0,"Potassium is the most reactive."],
+["Which metal is more reactive than hydrogen?",["Zinc","Copper","Silver","Gold"],0,"It displaces hydrogen from acids."],
+["Which metal is the least reactive here?",["Gold","Iron","Zinc","Sodium"],0,"It occurs free in nature."],
+["Metals above carbon in the series are obtained by",["Electrolysis","Carbon reduction","Heating alone","Hydrogen only"],0,"Carbon cannot reduce them."],
+["Mercury is obtained from cinnabar by",["Heating in air","Electrolysis","Carbon reduction","Smelting"],0,"HgS gives Hg on heating."],
+["Copper is obtained from Cu₂S by",["Heating in air","Electrolysis of water","Carbon reduction","Calcination"],0,"It is an unreactive metal."],
+["Zinc is obtained from its sulphide ore by",["Roasting, then reduction with carbon","Calcination only","Electrolysis only","Washing"],0,"The sulphide is first changed to oxide."],
+["In electrolytic refining, the impure metal is the",["Anode","Cathode","Electrolyte","Beaker"],0,"It dissolves."],
+["In refining copper, pure copper deposits on the",["Cathode","Anode","Beaker","Wire"],0,"Cu²⁺ ions are reduced."],
+["Anode mud contains",["Insoluble impurities like gold and silver","Copper sulphate","Water","Acid"],0,"They settle below the anode."],
+["MgCl₂ is formed when magnesium",["Loses 2 electrons","Gains 2 electrons","Loses 1 electron","Shares electrons"],0,"Each chlorine gains one."],
+["NaCl has ____ bonding.",["Ionic","Covalent","Metallic","Hydrogen"],0,"Na⁺ and Cl⁻ attract."],
+["Metals with dilute nitric acid",["Do not usually give hydrogen","Always give H₂","Give O₂","Give Cl₂"],0,"HNO₃ is an oxidising agent."],
+["Alloys are made to",["Improve strength and resist corrosion","Reduce hardness","Add colour only","Lower weight only"],0,"Example: stainless steel."],
+["Iron is made rust-proof by",["Alloying it into stainless steel","Heating","Soaking","Cooling"],0,"Chromium and nickel help."],
+["Lead is a poor",["Conductor of heat and electricity","Metal","Soft material","Dense metal"],0,"It conducts badly."],
+["A substance added to remove gangue as slag is a",["Flux","Catalyst","Reducing agent","Indicator"],0,"Example: limestone."]]],
 ["Carbon and its Compounds",[
 ["Number of covalent bonds formed by a carbon atom in methane:",["2","3","4","5"],2,"Carbon is tetravalent."],
 ["The functional group of alcohols is:",["–OH","–CHO","–COOH","–Cl"],0,"Alcohols contain the hydroxyl group."],
@@ -260,7 +356,27 @@ const Q=[
 ["Charcoal is an example of:",["Amorphous carbon","Crystalline carbon","A compound","A gas"],0,"It has no regular structure."],
 ["The bond between two carbon atoms in ethane is a:",["Single covalent bond","Double bond","Triple bond","Ionic bond"],0,"Ethane is C₂H₆."],
 ["Which burns with a clean blue flame?",["Methane","Ethyne in limited air","Ethene in limited air","Naphthalene"],0,"It burns almost completely."],
-["LPG consists mainly of:",["Butane","Methane","Ethyne","Ethanol"],0,"Along with some propane."]]]]},
+["LPG consists mainly of:",["Butane","Methane","Ethyne","Ethanol"],0,"Along with some propane."],
+["A covalent bond is formed by",["Sharing of electrons","Transfer of electrons","Loss of electrons","Gain of neutrons"],0,"Both atoms complete their octet."],
+["A hydrogen molecule has a",["Single covalent bond","Double bond","Triple bond","Ionic bond"],0,"H–H."],
+["An oxygen molecule has a",["Double bond","Single bond","Triple bond","Ionic bond"],0,"O=O."],
+["A nitrogen molecule has a",["Triple bond","Single bond","Double bond","Ionic bond"],0,"N≡N."],
+["The number of shared electron pairs in CO₂ is",["Four","Two","Three","Six"],0,"Two double bonds."],
+["Carbon does not form ionic bonds easily because it is hard to",["Gain or lose four electrons","Share electrons","Form molecules","Burn"],0,"It prefers sharing."],
+["The number of isomers of pentane is",["3","2","4","5"],0,"Pentane, isopentane and neopentane."],
+["The functional group in chloroethane is",["–Cl (halo)","–OH","–CHO","–COOH"],0,"It is a haloalkane."],
+["The prefix ‘prop’ means",["Three carbon atoms","Two carbons","Four carbons","One carbon"],0,"As in propane."],
+["The prefix ‘but’ means",["Four carbon atoms","Two carbons","Three carbons","Five carbons"],0,"As in butane."],
+["The suffix for alkenes is",["-ene","-ane","-yne","-ol"],0,"They have a double bond."],
+["The suffix for alkynes is",["-yne","-ane","-ene","-al"],0,"They have a triple bond."],
+["The suffix for alcohols is",["-ol","-al","-one","-oic acid"],0,"They have a hydroxyl group."],
+["The suffix for aldehydes is",["-al","-ol","-one","-oic acid"],0,"They have –CHO."],
+["The suffix for carboxylic acids is",["-oic acid","-ol","-al","-one"],0,"They have –COOH."],
+["Oxidation of ethanol gives",["Ethanoic acid","Ethane","Ethene","Methanol"],0,"An oxidising agent is needed."],
+["Ethanol is used in",["Medicines and as a fuel additive","Cement","Glass","Bricks"],0,"It is a good solvent."],
+["Ethanoic acid is used in",["Preserving pickles","Making cement","Making glass","Making bricks"],0,"It is the acid in vinegar."],
+["Detergents work in hard water because they",["Form soluble salts with Ca and Mg","Are acidic","Are oils","Are sticky"],0,"No scum forms."],
+["Burning coal and petroleum",["Produces CO₂ and heat","Absorbs CO₂","Produces only H₂","Produces only N₂"],0,"Fossil fuels are carbon compounds."]]]]},
 {id:"p10",cls:"10th",sub:"Science · Physics",ico:"💡",ch:[
 ["Light: Reflection and Refraction",[
 ["Which mirror is used in vehicle headlights?",["Plane","Concave","Convex","Cylindrical"],1,"A concave mirror gives a parallel beam from the bulb at focus."],
@@ -322,7 +438,27 @@ const Q=[
 ["A lens used to correct myopia has ____ power.",["Negative","Positive","Zero","Infinite"],0,"It is a concave lens."],
 ["A thicker (more curved) lens has:",["A shorter focal length","A longer focal length","The same focal length","Zero power"],0,"It bends light more."],
 ["A convex lens is thicker at the:",["Centre","Edges","Both equally","Neither"],0,"A concave lens is thicker at the edges."],
-["Light bends away from the normal when it goes from:",["Denser to rarer medium","Rarer to denser medium","Air to air","Along the normal"],0,"Its speed increases."]]],
+["Light bends away from the normal when it goes from:",["Denser to rarer medium","Rarer to denser medium","Air to air","Along the normal"],0,"Its speed increases."],
+["The angle of incidence equals the angle of",["Reflection","Refraction","Deviation","Emergence"],0,"First law of reflection."],
+["The incident ray, reflected ray and normal lie",["In the same plane","In different planes","Parallel to each other","At 90° only"],0,"Second law of reflection."],
+["A ray hitting a mirror along the normal is reflected",["Back along itself","At 45°","At 90°","Absorbed"],0,"The angle of incidence is 0°."],
+["The angle of incidence is measured from the",["Normal","Mirror surface","Ray","Pole"],0,"By convention."],
+["A ray through the centre of curvature reflects",["Back along the same path","Through F","Parallel to the axis","Through P"],0,"It strikes along the normal."],
+["A ray parallel to the axis, after reflecting from a concave mirror, passes through the",["Principal focus","Pole","Centre of curvature","Infinity"],0,"Standard ray rule."],
+["A ray through the focus of a concave mirror reflects",["Parallel to the principal axis","Through C","Through F","Back"],0,"By reversibility."],
+["In the mirror formula, distances are measured from the",["Pole","Focus","Centre","Edge"],0,"It is the origin."],
+["Distances measured against the incident light are",["Negative","Positive","Zero","Infinite"],0,"Cartesian sign convention."],
+["The height of an object above the principal axis is taken as",["Positive","Negative","Zero","Infinite"],0,"Upward heights are positive."],
+["For a concave mirror, u and f are",["Negative","Positive","Zero","Infinite"],0,"The object is in front of the mirror."],
+["A concave-mirror image with positive magnification is",["Virtual and erect","Real and inverted","Real and erect","Virtual and inverted"],0,"The object is between P and F."],
+["Large convex mirrors are used at",["Blind road turns","Telescopes","Solar cookers","Dentist’s clinics"],0,"They give a wider view."],
+["Torches use ____ mirrors.",["Concave","Convex","Plane","Cylindrical"],0,"They give a parallel beam."],
+["A glass slab shows lateral displacement because light",["Bends twice","Reflects","Stops","Disperses"],0,"It bends on entering and leaving."],
+["In a glass slab the angle of emergence equals the angle of",["Incidence","Refraction","Reflection","Deviation"],0,"The emergent ray is parallel."],
+["Light bends towards the normal when going from",["Air to water","Water to air","Air to air","Vacuum to vacuum"],0,"Water is denser."],
+["The refractive index of glass is about",["1.5","1.0","3","0.5"],0,"Water is about 1.33."],
+["The medium with the higher refractive index is",["Optically denser","Optically rarer","Hotter","Lighter"],0,"Light travels slower in it."],
+["Light travels fastest in",["Vacuum","Water","Glass","Diamond"],0,"At about 3 × 10⁸ m/s."]]],
 ["Human Eye and Colourful World",[
 ["The size of the pupil is controlled by the:",["Retina","Iris","Cornea","Lens"],1,"The iris widens or narrows the pupil."],
 ["The image in the human eye forms on the:",["Cornea","Iris","Retina","Pupil"],2,"The retina has light-sensitive cells."],
@@ -444,7 +580,27 @@ const Q=[
 ["A device at 220 V and 5 A has a power of:",["1100 W","44 W","225 W","215 W"],0,"P = VI."],
 ["In a series circuit, if one bulb fuses, the others:",["Go off","Glow brighter","Stay on","Explode"],0,"The circuit is broken."],
 ["Which is an electrical insulator?",["Rubber","Copper","Silver","Iron"],0,"It has very high resistivity."],
-["Electric potential is measured in:",["Volts","Amperes","Ohms","Joules"],0,"1 V = 1 J/C."]]],
+["Electric potential is measured in:",["Volts","Amperes","Ohms","Joules"],0,"1 V = 1 J/C."],
+["Resistors in series have an equivalent resistance equal to",["The sum of the resistances","Less than each","The product","The average"],0,"R = R₁ + R₂ + …"],
+["Resistors in parallel have an equivalent resistance",["Less than the smallest","More than the largest","Equal to the sum","Zero"],0,"1/R = 1/R₁ + 1/R₂."],
+["In series, the total voltage is",["The sum of the individual voltages","Same across each","Zero","Doubled"],0,"V = V₁ + V₂."],
+["In parallel, the total current is",["The sum of the branch currents","Same in each branch","Zero","Halved"],0,"I = I₁ + I₂."],
+["The slope of a V–I graph gives the",["Resistance","Current","Power","Charge"],0,"V/I = R."],
+["The slope of an I–V graph for a resistor is",["1/R","R","V","P"],0,"I = V/R."],
+["The symbol of a cell is",["A long and a short parallel line","A zig-zag","A circle with A","A circle with V"],0,"The long line is positive."],
+["The zig-zag symbol represents a",["Resistor","Cell","Switch","Bulb"],0,"It is a fixed resistance."],
+["A switch controls the current by",["Opening or closing the circuit","Adding resistance","Storing charge","Making light"],0,"It makes or breaks the path."],
+["An electric current needs a",["Closed circuit","Open circuit","Insulator","Gap"],0,"A complete path is required."],
+["Of two wires of equal length, the ____ wire has more resistance.",["Thinner","Thicker","Equal","Neither"],0,"R is proportional to 1/A."],
+["Of two wires of equal thickness, the ____ wire has more resistance.",["Longer","Shorter","Equal","Neither"],0,"R is proportional to l."],
+["The resistivity of an insulator is",["Very high","Very low","Zero","Negative"],0,"Example: rubber."],
+["Electrical energy equals",["Power × time","Power ÷ time","Power + time","Power − time"],0,"Measured in joules or kWh."],
+["A 2 kW heater runs for 3 hours. The energy used is",["6 kWh","1.5 kWh","5 kWh","2 kWh"],0,"E = P × t."],
+["The cost of 10 units at ₹5 per unit is",["₹50","₹5","₹15","₹500"],0,"Units × rate."],
+["The heating effect is used in",["Electric heaters and geysers","Fans","Motors","Loudspeakers"],0,"Resistance wires get hot."],
+["A fuse works on the",["Heating effect","Magnetic effect","Chemical effect","Mechanical effect"],0,"The wire melts on overload."],
+["Bulbs are filled with inert gas to",["Prolong the filament’s life","Increase voltage","Reduce light","Cool the glass"],0,"It prevents oxidation."],
+["10 V moves 5 C of charge. The work done is",["50 J","2 J","15 J","0.5 J"],0,"W = VQ."]]],
 ["Magnetic Effects of Electric Current",[
 ["Oersted showed that a current-carrying wire produces a:",["Magnetic field","Electric field","Gravitational field","Sound wave"],0,"A compass needle deflects near a current."],
 ["Outside a bar magnet, field lines go from:",["North to south pole","South to north pole","Centre to ends","They do not form loops"],0,"Inside the magnet they go south to north."],
@@ -567,7 +723,47 @@ const Q=[
 ["Lymph carries",["Digested fats and tissue fluid","Only oxygen","Only urea","Bile"],0,"It is part of the transport system."],
 ["The tissue that carries water in plants is",["Xylem","Phloem","Epidermis","Cork"],0,"It consists of dead vessels and tracheids."],
 ["Water enters root hairs by",["Osmosis","Digestion","Combustion","Fermentation"],0,"Soil water is more dilute."],
-["Dialysis is used when the",["Kidneys fail","Lungs fail","Heart fails","Liver fails"],0,"An artificial kidney cleans the blood."]]],
+["Dialysis is used when the",["Kidneys fail","Lungs fail","Heart fails","Liver fails"],0,"An artificial kidney cleans the blood."],
+["Trypsin acts on",["Proteins","Starch","Fats","Cellulose"],0,"It is a pancreatic enzyme."],
+["The pancreatic enzyme that digests starch is",["Amylase","Pepsin","Lipase","Trypsin"],0,"It acts in the small intestine."],
+["Intestinal juice finally converts proteins to",["Amino acids","Glucose","Fatty acids","Starch"],0,"This completes digestion."],
+["Carbohydrates are finally digested to",["Glucose","Amino acids","Fatty acids","Glycerol only"],0,"It is absorbed through the villi."],
+["The path of air is nostrils, pharynx, larynx and then the",["Trachea","Alveoli","Bronchi","Stomach"],0,"Then the bronchi and bronchioles."],
+["Air passes from the trachea into the",["Bronchi","Alveoli","Larynx","Nostrils"],0,"They branch into bronchioles."],
+["During exhalation the ribs",["Move down and in","Move up and out","Stay still","Break"],0,"The chest volume decreases."],
+["During inhalation the chest cavity",["Expands","Shrinks","Stays the same","Closes"],0,"Air rushes in."],
+["Oxygen is carried mostly by",["Haemoglobin in red blood cells","Plasma","Platelets","White blood cells"],0,"Haemoglobin binds oxygen."],
+["Most carbon dioxide is carried in blood",["Dissolved in plasma","On haemoglobin","In platelets","In white cells"],0,"It is more soluble than oxygen."],
+["Humans have a ____ circulation.",["Double","Single","Triple","No"],0,"Blood passes twice through the heart."],
+["Fish have a ____-chambered heart.",["Two","Three","Four","One"],0,"They have single circulation."],
+["Amphibians and most reptiles have a",["Three-chambered heart","Two-chambered heart","Four-chambered heart","One-chambered heart"],0,"Some mixing of blood occurs."],
+["Birds and mammals have",["Four-chambered hearts","Two-chambered hearts","Three-chambered hearts","One-chambered hearts"],0,"Oxygenated and deoxygenated blood stay separate."],
+["Blood pressure is measured with a",["Sphygmomanometer","Thermometer","Barometer","Hydrometer"],0,"It reads systolic and diastolic pressure."],
+["Normal blood pressure is about",["120/80 mm Hg","200/150 mm Hg","60/30 mm Hg","300/200 mm Hg"],0,"Systolic over diastolic."],
+["Which blood vessels have valves?",["Veins","Arteries","Capillaries","Aorta"],0,"They prevent backflow."],
+["Exchange of materials between blood and cells occurs in",["Capillaries","Arteries","Veins","Aorta"],0,"Their walls are one cell thick."],
+["Plasma carries",["Food, CO₂ and nitrogenous waste","Only oxygen","Only hormones","Only air"],0,"It is the liquid part of blood."],
+["White blood cells mainly",["Fight infection","Clot blood","Carry oxygen","Digest food"],0,"They are part of immunity."],
+["Transpiration pull helps in the",["Upward movement of water","Transport of food","Seed dispersal","Digestion"],0,"Evaporation from leaves creates suction."],
+["Root pressure helps transport water in",["Small plants at night","Tall trees by day","Fish","Soil"],0,"It is due to active uptake of ions."],
+["Phloem carries",["Food from leaves to other parts","Water only","Minerals only","Gases"],0,"This is called translocation."],
+["Translocation in phloem needs",["ATP energy","Direct sunlight","Wind","Gravity only"],0,"It is an active process."],
+["Stomata also lose water during",["Transpiration","Digestion","Excretion","Fermentation"],0,"They open in daylight."],
+["Excretion is the removal of",["Harmful metabolic wastes","Food","Only water","Oxygen"],0,"The kidneys do most of it."],
+["Plants get rid of excess water by",["Transpiration","Urination","Sweating","Digestion"],0,"They also shed leaves."],
+["Plants store wastes in",["Old xylem, leaves and bark","Roots only","Flowers only","Seeds only"],0,"Some wastes are shed with leaves."],
+["The filtering cluster of capillaries in a nephron is the",["Glomerulus","Collecting duct","Ureter","Urethra"],0,"It sits in Bowman’s capsule."],
+["Useful substances like glucose are",["Reabsorbed in the tubule","Lost in urine","Destroyed","Stored in the glomerulus"],0,"Reabsorption is selective."],
+["Urine passes from the kidney through the",["Ureter","Urethra","Nephron","Vein"],0,"It goes to the bladder."],
+["Urine leaves the body through the",["Urethra","Ureter","Kidney","Liver"],0,"After storage in the bladder."],
+["Haemodialysis is done using",["An artificial kidney","Lungs","A pacemaker","A vaccine"],0,"It removes waste from blood."],
+["The lungs excrete",["Carbon dioxide","Urea","Glucose","Bile"],0,"Through exhalation."],
+["Skin excretes",["Sweat with water and salts","Bile","Insulin","Urine"],0,"It also cools the body."],
+["Respiration in plants takes place",["All the time","Only at night","Only in daylight","Never"],0,"Cells always need energy."],
+["Gas exchange in roots occurs by",["Diffusion","Stomata","Photosynthesis","Digestion"],0,"It happens through root hairs."],
+["The bark of woody stems exchanges gases through",["Lenticels","Stomata","Roots","Flowers"],0,"They are small pores."],
+["Heterotrophs get food from",["Other organisms","Sunlight","Soil only","Air"],0,"They cannot make their own."],
+["Fermentation is a type of",["Anaerobic respiration","Aerobic respiration","Photosynthesis","Digestion"],0,"Yeast produces alcohol."]]],
 ["Control and Coordination",[
 ["The ‘emergency hormone’ is:",["Insulin","Thyroxine","Adrenaline","Auxin"],2,"Adrenaline raises heart rate and breathing in stress."],
 ["The part of the brain controlling balance and posture is the:",["Cerebrum","Cerebellum","Medulla","Pons"],1,"The cerebellum coordinates balance and movement."],
@@ -628,7 +824,27 @@ const Q=[
 ["Voluntary actions are controlled by the",["Fore-brain","Spinal cord only","Medulla","Pons"],0,"The cerebrum decides them."],
 ["A reflex arc ends at the",["Effector","Receptor","Brain","Sensory neuron"],0,"A muscle or gland responds."],
 ["Which of these is NOT a hormone?",["Haemoglobin","Insulin","Thyroxine","Adrenaline"],0,"It is a blood pigment."],
-["The adrenal glands sit above the",["Kidneys","Lungs","Heart","Liver"],0,"One on each kidney."]]],
+["The adrenal glands sit above the",["Kidneys","Lungs","Heart","Liver"],0,"One on each kidney."],
+["The brain has",["Three main regions","Two regions","Five regions","Seven regions"],0,"Fore-brain, mid-brain and hind-brain."],
+["The fore-brain includes the",["Cerebrum","Medulla","Pons","Cerebellum"],0,"It is the main thinking region."],
+["The hind-brain includes the cerebellum, pons and",["Medulla","Cerebrum","Thalamus","Spinal cord"],0,"They control involuntary actions."],
+["The pons helps in",["Regulating breathing","Thinking","Hormone secretion","Digestion"],0,"It is part of the hind-brain."],
+["Hunger is controlled by the",["Fore-brain","Cerebellum","Spinal cord","Medulla only"],0,"It has centres for hunger."],
+["Withdrawing your hand from a hot object is a",["Reflex action","Voluntary action","Hormonal action","Growth"],0,"The spinal cord handles it."],
+["Walking and writing are",["Voluntary actions","Reflex actions","Involuntary actions","Hormonal actions"],0,"The cerebrum controls them."],
+["Sneezing and blinking are",["Reflex actions","Voluntary actions","Learned actions","Hormonal actions"],0,"They are fast and automatic."],
+["A reflex action is fast because the signal goes to the",["Spinal cord, not the brain","Brain only","Heart","Lungs"],0,"It saves time."],
+["Chemical coordination in animals is by",["Hormones","Reflexes","Neurons only","Blood cells"],0,"Endocrine glands secrete them."],
+["The parathyroid glands regulate",["Calcium in blood","Sugar","Sodium","Iron"],0,"They lie in the neck."],
+["The pituitary controls growth and also the",["Other endocrine glands","Digestion","Nerves","Muscles"],0,"It is the master gland."],
+["The ovary secretes",["Oestrogen","Insulin","Thyroxine","Adrenaline"],0,"It is a female sex hormone."],
+["The male sex hormone is",["Testosterone","Oestrogen","Insulin","Thyroxine"],0,"The testes secrete it."],
+["The release of hormones is controlled by",["Feedback mechanisms","Reflexes","Digestion","Photosynthesis"],0,"Example: blood sugar and insulin."],
+["High blood sugar makes the pancreas release more",["Insulin","Adrenaline","Thyroxine","Auxin"],0,"It lowers the sugar."],
+["The plant hormone that makes stems bend is",["Auxin","Abscisic acid","Ethylene","Cytokinin"],0,"It causes cell elongation."],
+["The hormone that helps seed germination is",["Gibberellin","Abscisic acid","Ethylene","Auxin"],0,"It breaks dormancy."],
+["Abscisic acid",["Inhibits growth","Promotes growth","Ripens fruit","Elongates cells"],0,"It also causes wilting."],
+["Thigmotropism is the response to",["Touch","Light","Gravity","Water"],0,"Tendrils show it."]]],
 ["How do Organisms Reproduce",[
 ["Binary fission is seen in:",["Hydra","Amoeba","Yeast","Planaria"],1,"Amoeba splits into two equal daughter cells."],
 ["The male reproductive part of a flower is the:",["Pistil","Stamen","Ovary","Stigma"],1,"Anthers of the stamen produce pollen."],
@@ -689,7 +905,27 @@ const Q=[
 ["The embryo gets nourishment from the mother through the",["Placenta","Ovary","Vagina","Tube"],0,"It connects by the umbilical cord."],
 ["Oral contraceptive pills work by changing",["Hormonal balance","Blood group","Bone","Digestion"],0,"They prevent ovulation."],
 ["Condoms also protect against",["Sexually transmitted infections","Cold","Malaria","Cholera"],0,"They are a barrier method."],
-["Contraceptives help in",["Population control","Curing disease","Growth","Digestion"],0,"They prevent unwanted pregnancy."]]],
+["Contraceptives help in",["Population control","Curing disease","Growth","Digestion"],0,"They prevent unwanted pregnancy."],
+["Variation arises in reproduction because DNA copying is",["Not perfectly accurate","Perfect","Skipped","Doubled"],0,"It creates small differences."],
+["Variations help a species",["Survive changing environments","Stop growing","Avoid reproducing","Remain identical"],0,"Natural selection acts on them."],
+["Asexual reproduction needs",["Only one parent","Two parents","Gametes","Fertilisation"],0,"It produces clones."],
+["Binary fission in Leishmania occurs at the",["Whip-like end","Middle","Cell wall","Nucleus"],0,"It has a definite orientation."],
+["Which animal shows regeneration?",["Hydra","Frog","Human","Fish"],0,"Hydra can regrow body parts."],
+["In Hydra, buds grow into",["New individuals","Gametes","Flowers","Seeds"],0,"They detach from the parent."],
+["Rhizopus spores",["Grow into a new fungus in suitable conditions","Never germinate","Are male gametes","Are eggs"],0,"They are asexual."],
+["In a flower, the ovule contains an",["Egg cell","Pollen","Sperm","Style"],0,"It becomes the seed."],
+["The pollen tube carries",["Male gametes to the ovule","Water","Food","Female gametes"],0,"It grows through the style."],
+["The style connects the",["Stigma and ovary","Anther and filament","Petal and sepal","Root and stem"],0,"It carries the pollen tube."],
+["The calyx is made of",["Sepals","Petals","Stamens","Carpels"],0,"It is the outer green whorl."],
+["The corolla is made of",["Petals","Sepals","Stamens","Carpels"],0,"They are often coloured."],
+["Male germ cells in humans are produced in the",["Testes","Prostate","Vas deferens","Urethra"],0,"They form sperms."],
+["The tube carrying sperms from the testes is the",["Vas deferens","Ureter","Urethra","Fallopian tube"],0,"It joins the urethra."],
+["Fertilisation takes place in the",["Fallopian tube","Uterus","Ovary","Vagina"],0,"The zygote then moves to the uterus."],
+["If the egg is not fertilised, the uterine lining",["Breaks down as menstruation","Thickens more","Becomes an embryo","Hardens"],0,"This happens about every 28 days."],
+["Sex hormones are secreted in large amounts at",["Puberty","Birth","Old age","Death"],0,"They begin body changes."],
+["A sexually transmitted infection caused by bacteria is",["Gonorrhoea","AIDS","Warts","Common cold"],0,"Syphilis is bacterial too."],
+["Use of ____ helps prevent the spread of AIDS.",["Condoms","Pills","Vitamins","Antibiotics"],0,"They act as a barrier."],
+["Copper-T prevents pregnancy by stopping",["Implantation","Ovulation only","Menstruation","Digestion"],0,"It is placed in the uterus."]]],
 ["Heredity",[
 ["The Father of Genetics is:",["Darwin","Mendel","Lamarck","Morgan"],1,"Mendel studied inheritance in pea plants."],
 ["The F2 phenotypic ratio in a monohybrid cross is:",["1:1","3:1","9:3:3:1","1:2:1"],1,"3 dominant : 1 recessive; the genotypic ratio is 1:2:1."],
@@ -750,7 +986,27 @@ const Q=[
 ["Analogous organs have",["Different origin but the same function","The same origin","No function","The same structure"],0,"Example: wings of bat and bird."],
 ["The wings of a bird and a butterfly are",["Analogous","Homologous","Vestigial","Identical"],0,"Their origins differ."],
 ["Fossils are",["Remains of ancient organisms","Living cells","Only rocks","Only minerals"],0,"They show evolution."],
-["Human beings evolved in",["Africa","Australia","Antarctica","Europe"],0,"Fossil evidence supports this."]]],
+["Human beings evolved in",["Africa","Australia","Antarctica","Europe"],0,"Fossil evidence supports this."],
+["Mendel experimented on pea plants for about",["Seven years","One year","Twenty years","One month"],0,"He kept careful records."],
+["In Mendel’s experiments the dominant trait appeared in",["All F1 plants","Half of F1","None of F1","F2 only"],0,"The recessive reappeared in F2."],
+["A trait appearing in 25% of F2 plants is",["Recessive","Dominant","Hybrid","Acquired"],0,"The ratio is 3:1."],
+["A test cross is made with a",["Homozygous recessive parent","Heterozygous parent","Homozygous dominant parent","Mutant"],0,"It reveals the unknown genotype."],
+["Rr × Rr gives a genotype ratio of",["1 RR : 2 Rr : 1 rr","3:1","1:1","All Rr"],0,"Gametes combine randomly."],
+["Two tall plants can give a dwarf if both are",["Tt","TT","tt","T"],0,"A dwarf needs tt."],
+["The sex of a child depends on the sperm because the father has",["Both X and Y","Only X","Only Y","Neither"],0,"The mother has only X."],
+["The chance of a boy in each pregnancy is",["50%","25%","75%","100%"],0,"X and Y sperms are equally likely."],
+["Variations in sexually reproducing organisms arise from",["Recombination and mutation","Exercise","Diet","Climate only"],0,"Genes get mixed."],
+["A trait is likely to spread if it gives",["A survival advantage","A disadvantage","No change","Less food"],0,"This is natural selection."],
+["Genetic drift is a",["Random change in gene frequency","Planned change","Disease","Fossil"],0,"It is stronger in small populations."],
+["Fossils are usually found in",["Sedimentary rocks","Igneous rocks","Metamorphic rocks","Soil only"],0,"Layers show age."],
+["The age of a fossil can be found by",["Carbon dating","Counting rings","Weighing","Boiling"],0,"It uses radioactive isotopes."],
+["Archaeopteryx shows a link between",["Reptiles and birds","Fish and frogs","Apes and humans","Insects and spiders"],0,"It had feathers and teeth."],
+["The forelimbs of a human, bat and whale are",["Homologous","Analogous","Vestigial","Identical"],0,"They share a common origin."],
+["The wings of a bat and a bird are",["Analogous","Homologous","Vestigial","Identical"],0,"They have a different structure."],
+["Charles Darwin travelled on the ship",["HMS Beagle","Titanic","Santa Maria","Endeavour"],0,"He observed finches."],
+["Species that cannot interbreed are",["Different species","The same species","Clones","Hybrids"],0,"There is reproductive isolation."],
+["Artificial selection gave cabbage, cauliflower and broccoli from",["Wild cabbage","Rice","Banana","Bean"],0,"Humans chose the traits."],
+["Evolution does not mean",["Progress from ‘lower’ to ‘higher’ forms","Change over generations","Adaptation","Variation"],0,"It has no fixed direction."]]],
 ["Our Environment",[
 ["Energy passed to the next trophic level is about:",["1%","10%","50%","90%"],1,"The 10% law: the rest is lost as heat and in respiration."],
 ["The ozone layer protects us from:",["Infrared rays","UV rays","Radio waves","Cosmic dust"],1,"Ozone absorbs harmful ultraviolet radiation; CFCs deplete it."],
@@ -860,9 +1116,15 @@ async function doLogin(){const n=$("#nm").value.trim();if(!n)return;me={name:n,c
 async function save(){ls("vp_hist",hist);const a=hist[hist.length-1];if(!a||!me)return false;const q=ls("vp_q")||[];q.push({id:vid(),name:me.name,cls:me.cls,title:a.title,s:a.s,t:a.t,tm:a.tm,d:a.d});ls("vp_q",q);return flush()}
 function render(){head();if(!me)return login();home()}
 function myRes(){if(!hist.length)return"";return`<div class="card wrap"><b>📊 My Results (all chapters)</b><table><tr><th>Chapter</th><th>Score</th><th>%</th><th>Date</th></tr>${hist.slice().reverse().slice(0,40).map(a=>`<tr><td>${esc(a.title)}</td><td>${a.s}/${a.t}</td><td>${Math.round(a.s*100/a.t)}%</td><td>${a.d}</td></tr>`).join("")}</table></div>`}
+let flt="All";
+function setF(f){flt=f;home()}
+const GR={c10:"Chemistry",p10:"Physics",b10:"Biology",s8:"8th Science"};
 function home(){quiz=null;goTop();
- let h=`<h2>Hello, ${esc(me.name)}  👋</h2>`;
- h+=stats();Q.forEach(s=>{s.ch.forEach((c,i)=>{const n=hist.filter(a=>a.q.startsWith(s.id+i));const best=n.length?Math.max(...n.map(a=>Math.round(a.s*100/a.t))):null;h+=`<button class="card tile" onclick="pickSet('${s.id}',${i})"><span class="badge">${s.cls} · ${s.sub}</span><br><b>${s.ico} ${c[0]}</b><small>${c[1].length} questions${c[1].length>20?" · "+Math.ceil(c[1].length/20)+" sets":""}${best!==null?` · Best ${best}%`:""}</small></button>`})});
+ let h=`<div class="hello">Hello, ${esc(me.name)} 👋</div>`+stats()+`<div class="filters">${["All",...Object.values(GR)].map(f=>`<button class="${f===flt?"on":""}" onclick="setF('${f}')">${f}</button>`).join("")}</div>`;
+ Q.forEach(s=>{if(flt!=="All"&&GR[s.id]!==flt)return;h+=`<div class="sec">${s.cls} · ${s.sub}</div>`;
+  s.ch.forEach((c,i)=>{const ns=Math.ceil(c[1].length/20);let chips="";
+   for(let k=0;k<ns;k++){const key=s.id+i+(k?"s"+k:""),a=hist.filter(x=>x.q===key),b=a.length?Math.max(...a.map(x=>Math.round(x.s*100/x.t))):null;chips+=`<button class="chip ${b===null?"":b>=75?"g":b>=40?"a":"r"}" onclick="start('${s.id}',${i},${k})">${ns>1?"Set "+(k+1):"Start"}${b!==null?" · "+b+"%":""}</button>`}
+   h+=`<div class="card ch"><div class="top"><div class="ic">${s.ico}</div><div><b>${c[0]}</b><small>${c[1].length} questions${ns>1?" · "+ns+" sets":""}</small></div></div><div class="chips">${chips}</div></div>`})});
  h+=myRes();h+=`<div class="card"><b>🚧 Coming soon</b><small class="note"><br>More chapters, notes and Maths</small></div>`;
  h+=`<p style="text-align:center"><button class="back" onclick="tlogin()">👩‍🏫 Teacher login</button></p>`;
  app.innerHTML=h}
@@ -871,17 +1133,22 @@ function pickSet(id,i){const s=Q.find(x=>x.id===id),n=Math.ceil(s.ch[i][1].lengt
  for(let k=0;k<n;k++){const key=id+i+(k?"s"+k:""),a=hist.filter(x=>x.q===key),b=a.length?Math.max(...a.map(x=>Math.round(x.s*100/x.t))):null,len=Math.min(20,s.ch[i][1].length-k*20);h+=`<button class="card tile" onclick="start('${id}',${i},${k})"><b>Set ${k+1}</b><small>${len} questions${b!==null?" · Best "+b+"%":""}</small></button>`}
  app.innerHTML=h;goTop()}
 function start(id,i,k){k=k||0;const s=Q.find(x=>x.id===id);quiz={s,i,k,qs:sh(s.ch[i][1].slice(k*20,k*20+20)).map(mix),t0:Date.now(),n:0,sc:0,ans:[],ok:[],pick:null};show();goTop()}
-function show(){clearInterval(tm);const{qs,n,pick}=quiz,q=qs[n],mc=!!q[1],done=pick!==null;
- let h=`<button class="back" onclick="clearInterval(tm);home()">← Back</button><div class="hrow note"><span>Question ${n+1} / ${qs.length} · ${esc(quiz.s.ch[quiz.i][0])}</span><b id="tt" style="font-size:16px"></b></div><div class="bar"><i id="tb" style="width:100%;transition:width 1s linear"></i></div><div class="card"><span class="badge">${mc?"MCQ":q[0].includes("____")||q[0].includes("→")?"Fill in the blank":"One word"}</span><br><b>${q[0]}</b>`;
- if(mc)q[1].forEach((o,k)=>{let c="opt";if(done){if(k===q[2])c+=" ok";else if(k===pick)c+=" no"}h+=`<button class="${c}" ${done?"disabled":""} onclick="ans(${k})">${"ABCD"[k]}. ${o}</button>`});
- else h+=`<input id="tx" placeholder="Type your answer" ${done?"disabled":""} autocomplete="off" value="${done&&pick!==-1?esc(pick):""}"><button class="btn" ${done?"style='display:none'":""} onclick="ans($('#tx').value)">Submit</button>`;
- if(done){const ok=quiz.ok[n];h+=`<div class="sol"><b>${pick===-1?"⏰ Time up! ":ok?"✅ Correct!":"❌ Wrong. "}${ok?"":"Answer: "+(mc?q[1][q[2]]:q[2][0])}</b><br>${q[3]}</div><button class="btn" onclick="next()">${n+1<qs.length?"Next question →":"See result"}</button>`}
- app.innerHTML=h+"</div>";
- if(!done){left=T;const tot=left,t=$("#tt"),bar=$("#tb"),tick=()=>{t.textContent="⏱ "+left+"s";t.style.color=left<=8?"var(--no)":"var(--tx)";bar.style.width=left*100/tot+"%"};tick();tm=setInterval(()=>{left--;tick();if(left<=0){clearInterval(tm);ans(-1)}},1000)}}
+function show(){clearInterval(tm);const{qs,n,pick}=quiz,q=qs[n],mc=!!q[1],done=pick!==null,sel=quiz.sel;
+ const ty=mc?"MCQ":q[0].includes("____")||q[0].includes("→")?"Fill in the blank":"One word";
+ let h=`<div class="hrow"><button class="back" onclick="clearInterval(tm);home()">← Back</button><span class="pill" id="tt"></span></div><div class="note">Question ${n+1} of ${qs.length} · ${esc(quiz.s.ch[quiz.i][0])}</div><div class="bar"><i id="tb" style="width:100%;transition:width 1s linear"></i></div><div class="card"><span class="badge">${ty}</span><b class="qtxt">${q[0]}</b>`;
+ if(mc)q[1].forEach((o,k)=>{let c="opt";if(done){if(k===q[2])c+=" ok";else if(k===pick)c+=" no"}else if(k===sel)c+=" sel";h+=`<button class="${c}" ${done?"disabled":""} onclick="choose(${k})"><span class="ltr">${"ABCD"[k]}</span><span>${o}</span></button>`});
+ else h+=`<input id="tx" placeholder="Type your answer" ${done?"disabled":""} autocomplete="off" onkeydown="if(event.key==='Enter')ans(this.value)" value="${done&&pick!==-1?esc(pick):""}">`;
+ if(done){const ok=quiz.ok[n];h+=`<div class="sol"><b>${pick===-1?"⏰ Time up! ":ok?"✅ Correct!":"❌ Wrong. "}${ok?"":"Answer: "+(mc?q[1][q[2]]:q[2][0])}</b><br>${q[3]}</div>`}
+ h+=`</div><div class="act">`;
+ if(done)h+=`<button class="btn" onclick="next()">${n+1<qs.length?"Next question →":"See result"}</button>`;
+ else h+=mc?`<button class="btn" id="cf" ${sel==null?"disabled":""} onclick="ans(quiz.sel)">Confirm answer</button><p class="hint">Tap an option. You can change it before you confirm.</p>`:`<button class="btn" onclick="ans($('#tx').value)">Submit answer</button><p class="hint">You can edit your answer before you submit.</p>`;
+ app.innerHTML=h+`</div>`;
+ if(!done){left=T;const tot=left,t=$("#tt"),bar=$("#tb"),tick=()=>{t.textContent="⏱ "+left+"s";t.style.color=left<=10?"var(--no)":"var(--tx)";bar.style.width=left*100/tot+"%"};tick();tm=setInterval(()=>{left--;tick();if(left<=0){clearInterval(tm);const tx=$("#tx");ans(mc?(quiz.sel==null?-1:quiz.sel):(tx&&tx.value.trim()?tx.value:-1))}},1000)}}
+function choose(k){if(quiz.pick!==null)return;quiz.sel=k;document.querySelectorAll(".opt").forEach((b,i)=>b.classList.toggle("sel",i===k));const c=$("#cf");if(c)c.disabled=false}
 function ans(k){clearInterval(tm);const q=quiz.qs[quiz.n];if(quiz.pick!==null)return;
  const ok=k!==-1&&(q[1]?k===q[2]:hit(k,q[2]));
  quiz.pick=(k===""?-1:k);quiz.ans.push(k);quiz.ok.push(ok);if(ok)quiz.sc++;show()}
-function next(){quiz.n++;quiz.pick=null;if(quiz.n<quiz.qs.length){show();goTop();return}
+function next(){quiz.n++;quiz.pick=null;quiz.sel=null;if(quiz.n<quiz.qs.length){show();goTop();return}
  const c=quiz.s.ch[quiz.i],key=quiz.s.id+quiz.i+(quiz.k?"s"+quiz.k:""),nm=c[0]+(c[1].length>20?" · Set "+(quiz.k+1):"");
  quiz.prev=hist.filter(a=>a.q===key).slice(-1)[0];hist.push({q:key,title:nm,s:quiz.sc,t:quiz.qs.length,tm:quiz.tm=Math.round((Date.now()-quiz.t0)/1000),d:new Date().toISOString().slice(0,10)});quiz.status="Saving result…";res();
  save().then(setSt)}
