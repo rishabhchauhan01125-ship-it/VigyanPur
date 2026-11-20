@@ -32,6 +32,7 @@ table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:7px 5px
 <header><div class="hrow"><div><div class="logo">vigyan<span>पुर</span></div><div class="tag">Learn. Practice. Grow. 🌱</div></div><div id="hr"></div></div></header>
 <main id="app">Loading…</main>
 <script>
+const SHEET_URL="https://script.google.com/macros/s/AKfycbx7gO24jhEEaMkMEfcl-Q2XRBKnrSeM3wB3JmZOPyAb9Mgo6G3fLWxvI2y9-3m5LdZwSQ/exec";const ON=SHEET_URL.indexOf("https://")===0;
 const Q=[
 {id:"c10",cls:"10th",sub:"Science · Chemistry",ico:"⚗️",ch:[["Chemical Reactions and Equations",[
 ["Rusting of iron is an example of:",["Oxidation (corrosion)","Decomposition","Neutralisation","Reduction"],0,"Iron reacts slowly with moisture and oxygen to form hydrated iron oxide, so rusting is a form of oxidation called corrosion."],
@@ -589,22 +590,27 @@ const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.r
 const mix=q=>{if(!q[1])return q;const ix=sh(q[1].map((_,i)=>i));return[q[0],ix.map(i=>q[1][i]),ix.indexOf(q[2]),q[3]]};
 const to=(p,ms)=>Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new Error("t")),ms))]);
 function goTop(){window.scrollTo(0,0);try{document.querySelector("header").scrollIntoView()}catch(e){}}
-async function init(){me=ls("vp_me");hist=ls("vp_hist")||[];render();
- try{user=await to(claude.use("user"),8000);if(user){uid=await user.id();isT=await user.isOwner();if(!quiz)render()}}catch(e){}
- try{db=await to(claude.use("db"),8000);if(db&&uid){const s=await to(db.doc("results/"+uid).get(),8000);if(s.exists){const d=s.data();if((d.attempts||[]).length>=hist.length)hist=d.attempts;if(!me&&d.name){me={name:d.name,cls:d.cls};ls("vp_me",me)}}}}catch(e){}
- if(!quiz)render()}
-function head(){hr.innerHTML=me?`<button class="btn sm" onclick="logout()">${esc(me.name)} ⎋</button>`:""}
+const vid=()=>{let i=ls("vp_id");if(!i){i=(window.crypto&&crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random()).slice(0,36);ls("vp_id",i)}return i};
+let fp=Promise.resolve(),lastWhy="";
+async function send(p){let why="";try{const r=await jsonp(SHEET_URL+"?add="+encodeURIComponent(JSON.stringify(p)));if(r&&r.ok)return"";why=r&&r.error==="key"?"old Code.gs":(r&&r.error)||"script rejected"}catch(e){why="no answer"}
+ try{await to(fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(p)}),20000);return""}catch(e){return why+", "+((e&&e.message)||"network blocked")}}
+async function doFlush(){const q=ls("vp_q")||[];if(!q.length)return true;if(!ON){lastWhy="link not set";return false}const left=[];for(const p of q){const w=await send(p);if(w){left.push(p);lastWhy=w}}ls("vp_q",left);return !left.length}
+function flush(){fp=fp.then(doFlush);return fp}
+function setSt(ok){quiz.status=ok?"✅ Result sent to your teacher.":`⚠️ Could not send (${lastWhy}). Saved on this phone. <button class="back" onclick="retry()">🔄 Retry</button>`;const e=$("#sv");if(e)e.innerHTML=quiz.status}
+async function retry(){const e=$("#sv");if(e)e.textContent="Sending…";setSt(await flush())}
+async function init(){me=ls("vp_me");hist=ls("vp_hist")||[];render();flush();window.addEventListener("online",flush)}
+function head(){hr.innerHTML=(me?`<button class="btn sm" onclick="logout()">${esc(me.name)} ⎋</button> `:"")+`<button class="btn sm" onclick="tlogin()">👩‍🏫 Teacher</button>`}
 function logout(){me=null;ls("vp_me",null);render()}
 function login(){app.innerHTML=`<div class="card"><h2>👋 Welcome!</h2><label>Your name</label><input id="nm" placeholder="e.g. Rahul Sharma"><label>Class</label><select id="cl"><option>8th</option><option>10th</option></select><button class="btn" onclick="doLogin()">Start</button><p class="note">Your name and scores are visible to your teacher.</p></div>`}
-async function doLogin(){const n=$("#nm").value.trim();if(!n)return;me={name:n,cls:$("#cl").value};ls("vp_me",me);save();render()}
-async function save(){ls("vp_hist",hist);if(!(db&&uid&&me))return false;try{await to(db.doc("results/"+uid).set({name:me.name,cls:me.cls,attempts:hist.slice(-80)}),10000);return true}catch(e){return false}}
+async function doLogin(){const n=$("#nm").value.trim();if(!n)return;me={name:n,cls:$("#cl").value};ls("vp_me",me);ls("vp_me",me);render()}
+async function save(){ls("vp_hist",hist);const a=hist[hist.length-1];if(!a||!me)return false;const q=ls("vp_q")||[];q.push({id:vid(),name:me.name,cls:me.cls,title:a.title,s:a.s,t:a.t,tm:a.tm,d:a.d});ls("vp_q",q);return flush()}
 function render(){head();if(!me)return login();home()}
 function myRes(){if(!hist.length)return"";return`<div class="card wrap"><b>📊 My Results (all chapters)</b><table><tr><th>Chapter</th><th>Score</th><th>%</th><th>Date</th></tr>${hist.slice().reverse().slice(0,40).map(a=>`<tr><td>${esc(a.title)}</td><td>${a.s}/${a.t}</td><td>${Math.round(a.s*100/a.t)}%</td><td>${a.d}</td></tr>`).join("")}</table></div>`}
 function home(){quiz=null;goTop();
  let h=`<h2>Hello, ${esc(me.name)}  👋</h2>`;
  h+=stats();Q.forEach(s=>{s.ch.forEach((c,i)=>{const n=hist.filter(a=>a.q.startsWith(s.id+i));const best=n.length?Math.max(...n.map(a=>Math.round(a.s*100/a.t))):null;h+=`<button class="card tile" onclick="pickSet('${s.id}',${i})"><span class="badge">${s.cls} · ${s.sub}</span><br><b>${s.ico} ${c[0]}</b><small>${c[1].length} questions${c[1].length>20?" · "+Math.ceil(c[1].length/20)+" sets":""}${best!==null?` · Best ${best}%`:""}</small></button>`})});
  h+=myRes();h+=`<div class="card"><b>🚧 Coming soon</b><small class="note"><br>More chapters, notes and Maths</small></div>`;
- if(isT)h+=`<button class="btn" onclick="dash()">👩‍🏫 Teacher Dashboard</button>`;
+ h+=`<p style="text-align:center"><button class="back" onclick="tlogin()">👩‍🏫 Teacher login</button></p>`;
  app.innerHTML=h}
 function pickSet(id,i){const s=Q.find(x=>x.id===id),n=Math.ceil(s.ch[i][1].length/20);if(n<2)return start(id,i,0);
  let h=`<button class="back" onclick="home()">← Back</button><h2>${esc(s.ch[i][0])}</h2>`;
@@ -624,7 +630,7 @@ function ans(k){clearInterval(tm);const q=quiz.qs[quiz.n];if(quiz.pick!==null)re
 function next(){quiz.n++;quiz.pick=null;if(quiz.n<quiz.qs.length){show();goTop();return}
  const c=quiz.s.ch[quiz.i],key=quiz.s.id+quiz.i+(quiz.k?"s"+quiz.k:""),nm=c[0]+(c[1].length>20?" · Set "+(quiz.k+1):"");
  quiz.prev=hist.filter(a=>a.q===key).slice(-1)[0];hist.push({q:key,title:nm,s:quiz.sc,t:quiz.qs.length,tm:quiz.tm=Math.round((Date.now()-quiz.t0)/1000),d:new Date().toISOString().slice(0,10)});quiz.status="Saving result…";res();
- save().then(ok=>{quiz.status=ok?"✅ Result saved. Your teacher can see it.":"⚠️ Saved on this device only. Sign in to claude.ai so your teacher can see it.";const e=$("#sv");if(e)e.textContent=quiz.status})}
+ save().then(setSt)}
 function rv(j){const q=quiz.qs[j],ok=quiz.ok[j],g=quiz.ans[j],mc=!!q[1];return`<div class="card"><b>${j+1}. ${q[0]}</b><br>${ok?"✅":"❌"} Your answer: ${g===-1?"(no answer, time up)":mc?q[1][g]:esc(g)}${ok?"":`<br>Correct: ${mc?q[1][q[2]]:q[2][0]}`}<div class="sol">${q[3]}</div></div>`}
 function bdg(){const pc=a=>Math.round(a.s*100/a.t),avg=hist.length?Math.round(hist.reduce((m,a)=>m+pc(a),0)/hist.length):0,ds=[...new Set(hist.map(a=>a.d))],best=hist.length?Math.max(...hist.map(pc)):0;let st=0,dt=new Date();if(!ds.includes(dt.toISOString().slice(0,10)))dt.setDate(dt.getDate()-1);while(ds.includes(dt.toISOString().slice(0,10))){st++;dt.setDate(dt.getDate()-1)}
  const b=[];if(hist.length>=1)b.push("🌱 First test");if(hist.length>=5)b.push("📚 5 tests");if(hist.length>=15)b.push("🎓 15 tests");if(st>=3)b.push("🔥 3-day streak");if(best>=80)b.push("🌟 80%+ score");if(best===100)b.push("🏆 Perfect score");return{avg,st,b}}
@@ -643,15 +649,18 @@ function res(tab){tab=tab||"s";const t=quiz.qs.length,c=quiz.sc,p=Math.round(c*1
  else h+=quiz.qs.map((_,j)=>rv(j)).join("");
  app.innerHTML=h;goTop()}
 function review(){res("a")}
+function jsonp(u){return new Promise((res,rej)=>{const cb="vp"+Date.now(),sc=document.createElement("script"),t=setTimeout(()=>{rej(new Error(""));sc.remove()},15000);window[cb]=d=>{clearTimeout(t);res(d);sc.remove();delete window[cb]};sc.onerror=()=>{clearTimeout(t);rej(new Error(""));sc.remove()};sc.src=u+"&callback="+cb;document.head.appendChild(sc)})}
+async function getRows(){const u=SHEET_URL+"?key="+encodeURIComponent(sessionStorage.getItem("vp_k")||"");let t;try{t=await to(fetch(u).then(x=>x.text()),15000)}catch(e){return await jsonp(u)}try{return JSON.parse(t)}catch(e){throw new Error("The script replied with an error: "+t.replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim().slice(0,200))}}
+function tlogin(){if(sessionStorage.getItem("vp_k"))return dash();app.innerHTML=`<button class="back" onclick="home()">← Back</button><div class="card"><h2>👩‍🏫 Teacher login</h2><input id="tk" type="password" placeholder="Teacher key"><p class="note">Use the secret word from the first line of Code.gs.</p><button class="btn" onclick="sessionStorage.setItem('vp_k',$('#tk').value);dash()">Open dashboard</button></div>`}
 async function dash(f){f=f||"All";
  app.innerHTML=`<div class="hrow"><button class="back" onclick="home()">← Back</button><button class="back" onclick="dash('${f}')">🔄 Refresh</button></div><h2>Teacher Dashboard</h2><div id="t">Loading…</div>`;
- try{const sn=await to(db.collection("results").get(),12000),st=[];sn.docs.forEach(d=>{const x=d.data();if(f==="All"||x.cls===f)st.push(x)});
+ try{const r=await getRows();if(r.error==="key"){sessionStorage.removeItem("vp_k");throw new Error("Wrong teacher key. Use the secret word written in the first line of Code.gs.")}if(!r.rows)throw new Error("The Sheet script sent an unexpected reply.");const mp={};r.rows.forEach(v=>{const x=mp[v[1]]||(mp[v[1]]={name:v[2],cls:String(v[3]),attempts:[]});x.attempts.push({title:v[4],s:+v[5],t:+v[6],tm:+v[8],d:String(v[9]).slice(0,10)})});const st=Object.values(mp).filter(x=>f==="All"||x.cls===f);
  const at=[];st.forEach(x=>(x.attempts||[]).forEach(a=>at.push({n:x.name,...a})));
  const pc=a=>Math.round(a.s*100/a.t),avg=at.length?Math.round(at.reduce((m,a)=>m+pc(a),0)/at.length):0;
  const rows=st.map(x=>{const a=x.attempts||[],av=a.length?Math.round(a.reduce((m,y)=>m+pc(y),0)/a.length):0;return[x.name,x.cls,a.length,av+"%",a.length?Math.max(...a.map(pc))+"%":"-",a.length?a[a.length-1].d:"-",av]}).sort((p,q)=>q[6]-p[6]);
  at.sort((p,q)=>(q.d||"").localeCompare(p.d||""));
  const tb=(h,r)=>`<div class="card wrap"><table><tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>${r.map(x=>"<tr>"+x.map(c=>`<td>${esc(c)}</td>`).join("")+"</tr>").join("")}</table></div>`;
- $("#t").innerHTML=`<div class="tabs">${["All","8th","10th"].map(c=>`<button class="${c===f?"on":""}" onclick="dash('${c}')">${c}</button>`).join("")}</div><div class="g3"><div><b>${st.length}</b>Students</div><div><b>${at.length}</b>Tests taken</div><div><b>${avg}%</b>Class average</div></div>`+(st.length?`<h2>🏅 Students (by average)</h2>`+tb(["Name","Class","Tests","Avg","Best","Last"],rows.map(r=>r.slice(0,6)))+`<h2>🕒 Recent tests</h2>`+tb(["Name","Test","Score","%","Time","Date"],at.slice(0,50).map(a=>[a.n,a.title,a.s+"/"+a.t,pc(a)+"%",a.tm?Math.floor(a.tm/60)+"m "+a.tm%60+"s":"-",a.d])):"No attempts yet.")}
- catch(e){$("#t").textContent="Could not load data. Open this page as the owner, signed in to claude.ai."}}
+ $("#t").innerHTML=`<div class="tabs">${["All","8th","10th"].map(c=>`<button class="${c===f?"on":""}" onclick="dash('${c}')">${c}</button>`).join("")}</div><div class="g3"><div><b>${st.length}</b>Students</div><div><b>${at.length}</b>Tests taken</div><div><b>${avg}%</b>Class average</div></div>`+(st.length?`<h2>🏅 Students (by average)</h2>`+tb(["Name","Class","Tests","Avg","Best","Last"],rows.map(r=>r.slice(0,6)))+`<h2>🕒 Recent tests</h2>`+tb(["Name","Test","Score","%","Time","Date"],at.slice(0,50).map(a=>[a.n,a.title,a.s+"/"+a.t,pc(a)+"%",a.tm?Math.floor(a.tm/60)+"m "+a.tm%60+"s":"-",a.d])):"No results in the Sheet yet. Finish one test, wait a few seconds, then tap Refresh.")}
+ catch(e){$("#t").textContent=(e&&e.message)||"Could not reach the Sheet. In Apps Script set access to Anyone, then Deploy a New version."}}
 init();
 </script></body></html>
